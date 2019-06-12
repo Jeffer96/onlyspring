@@ -1,0 +1,72 @@
+*{
+	font-family: arial;
+	color: #353535;
+}
+
+body{
+	background-image: url('../images/compromiso ambiental.jpg');
+	background-size: cover;
+}
+
+#paneLogin{
+	width: 30%;
+	margin-left: 30%;
+	margin-top: 10%;
+	padding: 5%;
+	background-color: rgba(255,255,255,0.9);
+	box-shadow: 0vw 1vw 1vw black;
+}
+
+#paneLogin > h1 {
+	font-size: 1.5vw;
+	color: #1C1C22;	
+}
+
+#paneLogin > div {
+	width: 100%;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+#paneLogin > form > * {
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+}
+
+#paneLogin > form > p {
+	font-size: 1vw;
+}
+
+#paneLogin > form > input {
+	width: 96%;
+	font-size: 1vw;
+	padding: 0.5vw;
+	background-color: rgba(0,0,0,0.0);
+	border-style: none none solid none;
+	border-width: 1px;
+	border-color: gray;
+	
+}
+
+#toggleVisibility {
+	width: 2%;
+	margin: 0%;
+	position: absolute;
+	z-index: 1;
+	cursor: pointer;
+}
+
+#paneLogin > form > button {
+	width: 96%;
+	padding: 1vh;
+	background-color: #005376;
+	font-size: 1vw;
+	color: white;
+	cursor: pointer;
+}
+
+#paneLogin > form > button:hover {
+	background-color: #0080B7;
+}

@@ -8,17 +8,17 @@ body{
 	background-size: cover;
 }
 
-#paneLogin{
+#paneRegistry{
 	width: 30%;
 	position:absolute;
 	left: 30%;
-	top: 23%;
+	top: 10%;
 	padding: 5%;
 	background-color: rgba(255,255,255,0.9);
 	box-shadow: 0vw 1vw 1vw black;
 }
 
-#paneLogin > h1 {
+#paneRegistry > h1 {
 	width: 100%;
 	text-align:center;
 	font-size: 1.5vw;
@@ -26,7 +26,7 @@ body{
 	margin-bottom: 5vh;	
 }
 
-#paneLogin > div {
+#paneRegistry > div {
 	width: 100%;
 	padding-top: 2vh;
 	padding-bottom: 2vh;
@@ -34,16 +34,16 @@ body{
 	padding-right: 2%;
 }
 
-#paneLogin > form > * {
+#paneRegistry > form > * {
 	margin-top: 1vh;
 	margin-bottom: 1vh;
 }
 
-#paneLogin > form > p {
+#paneRegistry > form > p {
 	font-size: 1vw;
 }
 
-#paneLogin > form > input {
+#paneRegistry > form > input {
 	width: 96%;
 	font-size: 1vw;
 	padding: 0.5vw;
@@ -62,7 +62,7 @@ body{
 	cursor: pointer;
 }
 
-#paneLogin > form > button {
+#paneRegistry > form > button {
 	width: 96%;
 	padding: 1vh;
 	background-color: #005376;
@@ -71,6 +71,6 @@ body{
 	cursor: pointer;
 }
 
-#paneLogin > form > button:hover {
+#paneRegistry > form > button:hover {
 	background-color: #0080B7;
 }

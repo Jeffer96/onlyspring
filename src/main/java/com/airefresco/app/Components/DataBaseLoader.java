@@ -17,7 +17,7 @@ public class DataBaseLoader implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		customerRepository.save(new User("airefresco","830.071.876-1","ADMIN"));
+		customerRepository.save(new User("airefresco", "AppAirefresco", "airefresco",  830071876 ));
 	}
 
 }

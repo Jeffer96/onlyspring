@@ -12,64 +12,73 @@ import net.minidev.json.annotate.JsonIgnore;
 
 
 @Entity
-@Table(name="users")
+@Table(name="Users")
 @ToString(exclude = "pass")
 @Data
 public class User {
 	
 	@Id
-	private Long id;
+	private int id;
 	@NotBlank
-	private String name;
+	private String userName;
+	@NotBlank
+	private String nickName;
 	@NotBlank
 	@JsonIgnore 
-	private String pass;
-	private String role;
+	private String userPass;
 	
 	public User() {
 		
 	}
 	
+	public User(String name, String nickName, String pass, int id) {
+		this.id = id;
+		this.userPass = secure(pass);
+		this.nickName = nickName;
+		this.userName = name;
+	}
+	
+	
 	protected String secure(String param) {
 		return "some"+param;
 	}
 	
-	public User(String name, String pass, String role) {
-		this.name= name;
-		this.pass = secure(pass);
-		this.role = role;
+	public User(String name, String pass) {
+		this.userName= name;
+		this.userPass = secure(pass);
 	}
 	
 	public void setName(String name) {
-		this.name = name;
+		this.userName = name;
 	}
 	
 	public String getName() {
-		return this.name;
+		return this.userName;
 	}
 	
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
-	public String getRole() {
-		return this.role;
-	}
 
 	public String getPass(){
-		return this.pass.substring(3);
+		return this.userPass.substring(3);
 	}
 	
 	public void setPass(String pass) {
-		this.pass = secure(pass);
+		this.userPass = secure(pass);
 	}
 	
-	public Long getId() {
+	public int getId() {
 		return this.id;
 	}
 	
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+	
+	public String getNickName() {
+		return this.nickName;
 	}
 	
 }

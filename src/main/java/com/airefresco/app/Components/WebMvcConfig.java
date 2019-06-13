@@ -26,10 +26,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("login");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/certificados").setViewName("certificados");
+        registry.addViewController("/registro").setViewName("registro");
     }
     
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    	registry.addResourceHandler("/supportSources/**").addResourceLocations("classpath:/resources/static/supportSources/");
+    	registry.addResourceHandler("/supportSources/**").addResourceLocations("classpath:/static/supportSources/");
+    	registry.addResourceHandler("/script/**").addResourceLocations("classpath:/static/script/");
     }
 }

@@ -62,15 +62,16 @@ body{
 	cursor: pointer;
 }
 
-#paneLogin > form > button {
+#paneLogin > form > h2 {
 	width: 96%;
 	padding: 1vh;
 	background-color: #005376;
 	font-size: 1vw;
 	color: white;
 	cursor: pointer;
+	text-align: center;
 }
 
-#paneLogin > form > button:hover {
+#paneLogin > form > h2:hover {
 	background-color: #0080B7;
 }

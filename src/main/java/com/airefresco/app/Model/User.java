@@ -1,10 +1,18 @@
 
 package com.airefresco.app.Model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import lombok.Data;
 import lombok.ToString;
@@ -12,7 +20,7 @@ import net.minidev.json.annotate.JsonIgnore;
 
 
 @Entity
-@Table(name="Users")
+@Table(name="users")
 @ToString(exclude = "pass")
 @Data
 public class User {
@@ -26,21 +34,25 @@ public class User {
 	@NotBlank
 	@JsonIgnore 
 	private String userPass;
+	@NotBlank
+	private String roleName;
+	
 	
 	public User() {
 		
 	}
 	
-	public User(String name, String nickName, String pass, int id) {
+	public User(String name, String nickName, String pass, int id, String roleName) {
 		this.id = id;
 		this.userPass = secure(pass);
 		this.nickName = nickName;
 		this.userName = name;
+		this.roleName = roleName;
 	}
 	
 	
 	protected String secure(String param) {
-		return "some"+param;
+		return new BCryptPasswordEncoder().encode(param);
 	}
 	
 	public User(String name, String pass) {
@@ -58,7 +70,7 @@ public class User {
 	
 
 	public String getPass(){
-		return this.userPass.substring(3);
+		return this.userPass;
 	}
 	
 	public void setPass(String pass) {
@@ -79,6 +91,14 @@ public class User {
 	
 	public String getNickName() {
 		return this.nickName;
+	}
+	
+	public String getRoleName() {
+		return this.roleName;
+	}
+	
+	public void setRoleName(String rol) {
+		this.roleName = rol;
 	}
 	
 }

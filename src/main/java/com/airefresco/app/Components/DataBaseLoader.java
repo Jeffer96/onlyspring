@@ -1,4 +1,4 @@
-package com.airefresco.app.Components;
+/**package com.airefresco.app.Components;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,7 +17,8 @@ public class DataBaseLoader implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		customerRepository.save(new User("airefresco", "AppAirefresco", "airefresco",  830071876 ));
+		
+		
 	}
 
-}
+}**/

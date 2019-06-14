@@ -1,19 +1,16 @@
 package com.airefresco.app.service;
-import java.util.Collection;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.airefresco.app.Model.User;
 
-@RepositoryRestResource(exported = false)
-public interface UserRepository extends CrudRepository<User,String>{
+public interface UserRepository extends CrudRepository<User,Integer>{
 	
-	//User findByName(String name);
+	@Query(value = "SELECT * FROM users WHERE nick_name = ?1", nativeQuery = true)
+	User findUserByNickName(String nickName);	
 	
-	//Collection<User> getAll();
+	@Query(value = "SELECT * FROM users WHERE id = ?1", nativeQuery = true)
+	User findUserById(int id);
 	
-	//Collection<User> getByRoleName(String role);
-	
-
 }

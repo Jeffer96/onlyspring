@@ -62,15 +62,16 @@ body{
 	cursor: pointer;
 }
 
-#paneRegistry > form > button {
-	width: 96%;
-	padding: 1vh;
+#paneRegistry > form > h2 {
+	width: 98%;
+	padding: 1%;
 	background-color: #005376;
 	font-size: 1vw;
 	color: white;
 	cursor: pointer;
+	text-align: center;
 }
 
-#paneRegistry > form > button:hover {
+#paneRegistry > form > h2:hover {
 	background-color: #0080B7;
 }

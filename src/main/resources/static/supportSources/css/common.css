@@ -2,3 +2,36 @@
 	margin: 0%;
 	box-sizing: boder-box;
 }
+
+
+#loadingLayout{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	display: none;
+	z-index: 1;
+	background-image: radial-gradient(#00000059 ,#001925f2);
+}
+
+#loadingLayout > section {
+	position: relative;
+	background-color: white;
+	width: 40vw;
+	height: 30vh;
+	margin-left: 30vw;
+	margin-top: 35vh;
+	border-radius: 1vw;
+}
+
+#loadingLayout > section > img {
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 5%;
+}
+
+#loadingLayout > section > h1 {
+	margin-top: 3vh;
+	width: 100%;
+	font-size: 2vw;
+	text-align: center;
+}

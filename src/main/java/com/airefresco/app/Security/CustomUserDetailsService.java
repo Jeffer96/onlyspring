@@ -1,7 +1,7 @@
 package com.airefresco.app.Security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+//import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,29 +18,33 @@ public class CustomUserDetailsService implements UserDetailsService {
     UserRepository userRepository;
 	
 	@Override
-	public UserDetails loadUserByUsername(String nickName) throws UsernameNotFoundException {
-		User user = userRepository.findUserByNickName( nickName );
-		UserPrincipal ans;
-		if (user != null) {
-			ans = UserPrincipal.create(user);
-		}else {
-			throw  new UsernameNotFoundException(">>>>>>>>>>>>>>>>>>>>>>>>User not found : " + nickName);
-
-		}
+	@Transactional
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = userRepository.findUserByNickName( username );
+		/**
+		if (user == null) {
+			throw  new UsernameNotFoundException(">>>>>>>>>>>>>>>>>>>>>>>>User not found : " + username);
+		}**/
 		
-        return ans;
+        return UserPrincipal.create(user);
 	}
 	
 	 @Transactional
     public UserDetails loadUserById(int id) {
-		 User user;
-		 if (userRepository.existsById(id)) {
-			 user = userRepository.findUserById(id);
+		 System.out.println(" vamos a revisar el usuario");
+		 User user = userRepository.findUserById(id);
+		 
+		 if (user == null) {
+			 System.out.println(" 3.5 no encontró el usuario");
 		 }else {
-        		throw new ResourceNotFoundException(">>>>>>>>>>>>>>>>>>>>>>>>User not found<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+			 System.out.println(" 3.5 el usuario es"+user.getName());
 		 }
-
         return UserPrincipal.create(user);
     }
+	 
+	 @Transactional
+	 public User getUserAppById(int id) {
+		 return userRepository.findUserById(id);
+	 }
 
 }

@@ -7,9 +7,10 @@ import java.util.stream.Collectors;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.airefresco.app.Security.UserPrincipal;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -28,18 +29,16 @@ public class TokenProvider {
 	}
 
 	public static String generateToken(Authentication authentication) {
-		final String authorities = authentication.getAuthorities().stream()
-				.map(GrantedAuthority::getAuthority)
-				.collect(Collectors.joining(","));
+		UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 		return Jwts.builder()
-				.setSubject(authentication.getName())
-				.claim(AUTHORITIES_KEY, authorities)
-				.signWith(SignatureAlgorithm.HS256, SUPER_SECRET_KEY)
-				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION_TIME))
+				.setSubject(Integer.toString(userPrincipal.getId()))
+				.signWith(SignatureAlgorithm.HS512, SUPER_SECRET_KEY)
+				.setIssuedAt(new Date())
+				.setExpiration(new Date(new Date().getTime() + TOKEN_EXPIRATION_TIME))
 				.compact();
 	}
 	
+	/**
 	public static UsernamePasswordAuthenticationToken getAuthentication(final String token, final UserDetails userDetails) {
 
 		Claims claims = Jwts.parser()
@@ -53,7 +52,7 @@ public class TokenProvider {
 						.collect(Collectors.toList());
 
 		return new UsernamePasswordAuthenticationToken(userDetails, "", authorities);
-	}
+	}**/
 
 	public static int getUserId(String token) {
 		Claims claims = Jwts.parser()
@@ -63,7 +62,7 @@ public class TokenProvider {
 		return Integer.parseInt(claims.getSubject());
 	}
 	
-	public boolean validateToken(String authToken) {
+	public static boolean validateToken(String authToken) {
         try {
             Jwts.parser().setSigningKey(SUPER_SECRET_KEY).parseClaimsJws(authToken);
             return true;

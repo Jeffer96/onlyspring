@@ -21,9 +21,7 @@ import static com.airefresco.app.Security.Constants.*;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	
-		@Autowired 
-		private TokenProvider tp;
-		
+	
 		@Autowired
 		private CustomUserDetailsService cuds;
 
@@ -33,15 +31,22 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			try {
 				String token = getJwtFromRequest(request);
 				
-				if (StringUtils.hasText(token) && tp.validateToken(token)) {
+				if (StringUtils.hasText(token) && TokenProvider.validateToken(token)) {
+					System.out.println(" 2. el token es valido");
 					int userId = TokenProvider.getUserId(token);
+					System.out.println(" 3. el id del usuario es: "+userId);
+					//Aqui esta el triple hp error-------------------------------------------------------------------------------------------------------------
 					UserDetails ud = cuds.loadUserById(userId);
+					System.out.println(" 4. cargo el ud");
 					UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(ud,null,ud.getAuthorities());
+					System.out.println(" 5. carga el upat");
 					auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+					System.out.println(" 6. establece los detalles de autentication");
 					SecurityContextHolder.getContext().setAuthentication(auth);
+					System.out.println(" 7. finaliza bien hp vida");
 				}
 			}catch (Exception e) {
-				
+				System.out.println("Error from jwt filter: "+e);
 			}
 			
 			fc.doFilter(request, response);
@@ -52,6 +57,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			String bearerToken = request.getHeader(HEADER_AUTHORIZACION_KEY);	
 			if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(TOKEN_BEARER_PREFIX)) {
 				ans = bearerToken.substring(7,bearerToken.length());
+				System.out.println(" 1. el token no es nulo");
 			}
 			return ans;
 		}

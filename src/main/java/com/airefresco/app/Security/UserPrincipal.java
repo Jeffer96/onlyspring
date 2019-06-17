@@ -25,46 +25,42 @@ public class UserPrincipal implements UserDetails {
     private String nickName;
 
     @JsonIgnore
-    private String email;
-
-    @JsonIgnore
     private String userPass;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrincipal(int id, String name, String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserPrincipal(int id, String userName, String nickName, String password, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
-        this.userName = username;
+        this.userName = userName;
+        this.nickName = nickName;
         this.userPass = password;
         this.authorities = authorities;
     }
     
     public static UserPrincipal create(User user) {
-    	if ( user != null ) {
-	    	SimpleGrantedAuthority  role =  new SimpleGrantedAuthority (user.getRoleName());
-	       List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
-	       authorities.add(role);
-	
-	        return new UserPrincipal(
-	                user.getId(),
-	                user.getName(),
-	                user.getNickName(),
-	                user.getPass(),
-	                authorities
-	        );
-    	}else {
-    		return null;
-    	}
+    	SimpleGrantedAuthority  role =  new SimpleGrantedAuthority (user.getRoleName());
+    	System.out.println(" 3.5.6 obtiene el rol");
+       List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+       authorities.add(role);
+        return new UserPrincipal(
+                user.getId(),
+                user.getName(),
+                user.getNickName(),
+                user.getPass(),
+                authorities
+        );
+    	
     }
     
     public int getId() {
     	return this.id;
     }
-    
+        
     public String getNickName() {
     	return this.nickName;
     }
     
+       
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub

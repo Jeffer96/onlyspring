@@ -1,23 +1,26 @@
 package com.airefresco.app.Security;
 
-import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.AuthenticationEntryPoint;
-import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import java.io.IOException;
 
-public class CustomEntryPoint extends LoginUrlAuthenticationEntryPoint implements AuthenticationEntryPoint{
 
-	public CustomEntryPoint(String loginFormUrl) {
-		super(loginFormUrl);
-	}
+@Component
+public class CustomEntryPoint implements AuthenticationEntryPoint {
 
-	@Override
-    public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,AuthenticationException e) throws IOException, ServletException {
-        //httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
+    private static final Logger logger = LoggerFactory.getLogger(CustomEntryPoint.class);
+    @Override
+    public void commence(HttpServletRequest httpServletRequest,
+                         HttpServletResponse httpServletResponse,
+                         AuthenticationException e) throws IOException, ServletException {
+        logger.error(">>>>>>>>>>>>> Responding with unauthorized error. Message - {}", e.getMessage());
+        httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
     }
-
 }

@@ -75,3 +75,9 @@ body{
 #paneLogin > form > h2:hover {
 	background-color: #0080B7;
 }
+
+#errorMsg {
+	color: #b50000;
+	font-size: 0.8vw;
+	display: none;
+}

@@ -8,7 +8,6 @@
 	position: absolute;
 	width: 100vw;
 	height: 100vh;
-	display: none;
 	z-index: 1;
 	background-image: radial-gradient(#00000059 ,#001925f2);
 }
@@ -35,3 +34,161 @@
 	font-size: 2vw;
 	text-align: center;
 }
+/** dashBoards themes **/
+
+.Header{
+	width: 100vw;
+	height: 12vh;
+	background-image: linear-gradient(#005eec,#0093e8);
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	padding-top: 1vh;
+	z-index: 1;
+}
+
+.Header > div {
+	position: absolute;
+	display: flex;
+}
+
+.UserInfo{
+	width: 50%;
+	padding-left: 3%;
+}
+
+#userPic{
+	width: 11vh;
+	height: 11vh;
+	margin-right: 5%;
+	border-radius: 50%;
+}
+
+.UserInfo > div {
+	margin-top: 1vh;
+}
+
+#userName{
+	font-family: arial black;
+	font-size: 2vw;
+	color: white;
+}
+
+#userRole {
+	font-family: arial;
+	font-size: 1.5vw;
+	color: #e8e8e8;
+}
+
+.NotificationArea{
+	right: 0%;
+	position: absolute;
+	width: 50%;
+	height: 5vh;
+	top: 6vh;
+	display: flex;
+}
+
+.NotificationArea >  section{
+	position: relative;
+	width: 10%;
+	left: 60%;
+}
+
+.dropDown {
+	position: absolute;
+	width: 12vw;
+	height: 20vh;
+	top: 100%;
+	right: 35%;
+	overflow-y:hidden;
+	overflow-x:hidden;
+	display: none;	
+	border-radius: 1.5vw 0vw 1.5vw 1.5vw;
+	box-shadow: 0.2vw 0.2vw 0.0vw black;
+	background-image: linear-gradient(#ffffff,#f1f1f1);
+	animation: dropDown 0.5s;
+	-webkit-animation: dropDown 0.5s;
+	-moz-animation: dropDown 0.5s;
+}
+
+@keyframes dropDown{
+	0% {height: 0vh}
+	100% {height: 20vh}
+}
+@-webkit-keyframes dropDown{
+	0% {height: 0vh}
+	100% {height: 20vh}
+}
+@-moz-keyframes dropDown{
+	0% {height: 0vh}
+	100% {height: 20vh}
+}
+
+.dropDown > div {
+	overflow-y : scroll;
+	width: 107%;
+	height: 100%;
+}
+
+.NotificationArea > section > img {
+	position: absolute;
+	right: 0%;
+	width: 5vh;
+	height: 5vh;
+	cursor: pointer;
+}
+
+.spanAlert{
+	position: absolute;
+	right: -10%;
+	z-index: 1;
+	top: -20%;
+	font-family: comic sans ms;
+	color: #ffffff;
+	background-color: #9a0000;
+	border-radius: 40%;
+	width: 1.2vw;
+	height: 1.2vw;
+	text-align: center;
+}
+
+.dashBoard{
+	position: absolute;
+	top: 12vh;
+	height: 88vh;
+	width: 100vw;
+	background-image: linear-gradient( #ffffff,#f1f1f1);
+}
+
+.sideBar{
+	width: 20%;
+	height: 100%;
+	background-image: linear-gradient(#252525,#252525);
+	box-shadow: 0vw 0vw 1vw #8c8c8c;
+}
+
+.sideBar > ul {
+	padding-top: 5vh;
+	list-style: none;
+	color: white;
+	font-size: 1.2vw;
+	font-family: arial;
+}
+
+.sideBar > ul > li {
+
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	cursor: pointer;
+	border-radius: 5vw 0vw 0vw 5vw;
+}
+
+.sideBar > ul > li:hover {
+	color: #001342;
+	background-color: #b9b9b9;
+}
+
+

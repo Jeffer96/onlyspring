@@ -2,14 +2,11 @@ package com.airefresco.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+//import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
+//import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 @SpringBootApplication
-@EntityScan(basePackageClasses = {
-		AirefrescoApplication.class,
-		Jsr310JpaConverters.class
-})
+//@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 public class AirefrescoApplication {
 
 	public static void main(String[] args) {

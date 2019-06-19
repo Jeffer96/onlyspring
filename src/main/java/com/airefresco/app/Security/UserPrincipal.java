@@ -39,7 +39,6 @@ public class UserPrincipal implements UserDetails {
     
     public static UserPrincipal create(User user) {
     	SimpleGrantedAuthority  role =  new SimpleGrantedAuthority (user.getRoleName());
-    	System.out.println(" 3.5.6 obtiene el rol");
        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
        authorities.add(role);
         return new UserPrincipal(

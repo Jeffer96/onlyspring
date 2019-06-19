@@ -7,7 +7,7 @@ public class CustomErrorController implements ErrorController {
 
 	@RequestMapping("/error")
 	public String indexHandler() {
-		return "";
+		return "/unauthorized";
 	}
 	
 	@Override

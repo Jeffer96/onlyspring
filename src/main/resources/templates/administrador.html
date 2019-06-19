@@ -1,29 +1,51 @@
-<!DOCTYPE html>
-<html lang = "es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name = "viewport" content = "width=device-width, initial-scale=1, maximum-scale=1">
-		<title>Portal web - Airefresco</title>
-		<link rel = "shortcut icon" href="supportSources/images/logo.ico" type="image/png" />
-		<link rel = "stylesheet" href = "supportSources/css/registro.css">
-		<link rel = "stylesheet" href = "supportSources/css/common.css">
-	</head>
-	<body>
-		<div id="paneRegistry">
-			<h1>Bienvenido al panel del administrador</h1>
-			<form>
-				<p>Usuario: </p>
-				<input type="text" id="userName"/>
-				<p>Nombre de usuario: </p>
-				<input type="text" id="userNick"/>
-				<p>Contraseña:</p>
-				<img id="toggleVisibility" src="supportSources/images/show.png" onclick = "toggleVisiblePass()"/>
-				<input type="password" id="userPass"/>
-				<p>Identificación: </p>
-				<input type="text" id="userId"/>
-				<h2 onclick="test()"> ingresar </h2>
-			</form>
+<section class="Header">
+	<div class="UserInfo">
+		<img id="userPic" src="supportSources/images/unauthenticated.jpg"/>
+		<div>
+			<h1 id="userName">Unauthenticated</h1>
+			<p id="userRole">role undefined</p>
 		</div>
-	</body>
-	<script type="text/javascript" src="script/public/publicSourcesHandlers.js"> </script>
-</html>
+	</div>
+	<div class="NotificationArea">
+		<section>
+			<p class="spanAlert" id = "messagesSpan">7</p>
+			<img src="supportSources/images/messages.png" onclick="dropDown('messages')"/>
+			<div class="dropDown" id="messagesDropDown">
+				<div >
+					<ul id="messageList">							
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section>
+			<p class="spanAlert" id = "notifySpan">10</p>
+			<img src="supportSources/images/notifications.png" onclick="dropDown('notify')"/>
+			<div class="dropDown" id="notifyDropDown">
+				<div>
+					<ul id="notificationList">							
+					</ul>
+				</div>
+			</div>
+		</section>
+	</div>
+</section>
+<div class="dashBoard">
+	<div class="sideBar">
+		<ul>
+			<li>
+				Control de usuarios
+			</li>
+			<li>
+				planeación
+			</li>
+			<li>
+				tareas
+			</li>
+			<li>
+				Control de actividades
+			</li>
+		</ul>
+	</div>			
+</div>
+<div class="MainDashBoard">
+</div>

@@ -2,13 +2,11 @@ package com.airefresco.app.Security;
 
 
 import org.springframework.context.annotation.Configuration;
-
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,7 +29,7 @@ public class webSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	CustomEntryPoint unauthorizedHandler;
-		
+			
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -65,17 +63,21 @@ public class webSecurityConfig extends WebSecurityConfigurerAdapter{
             	.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
         .authorizeRequests()
-            	.antMatchers("/supportSources/**","/script/public/**","/certificados/**","/login/**","/administrador","/")
+            	.antMatchers("/supportSources/**","/script/public/**","/certificados/**","/login/**","/")
             		.permitAll()
             	.anyRequest()
             		.authenticated()
              .and()
         .formLogin()
-        	.loginPage("/login")
-        	.permitAll();
+        	.loginPage("/portal")
+        	.permitAll()
+        	.and()
+        .logout()
+        	.clearAuthentication(true)
+        	.logoutSuccessUrl("/login");
 		
 		// Add our custom JWT security filter
-		httpSecurity.addFilterBefore( new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class );
+		httpSecurity.addFilterBefore( new JwtAuthenticationFilter(cuds), UsernamePasswordAuthenticationFilter.class );
 	}
 
 	

@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.airefresco.app.Model.User;
 import com.airefresco.app.service.UserRepository;
@@ -17,8 +16,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
     UserRepository userRepository;
 	
+	public CustomUserDetailsService() {
+		System.out.println(">>>>>>>>>>>>>>>>creando el cuds");
+	}
+	
 	@Override
-	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepository.findUserByNickName( username );
 		/**
@@ -29,20 +31,12 @@ public class CustomUserDetailsService implements UserDetailsService {
         return UserPrincipal.create(user);
 	}
 	
-	 @Transactional
     public UserDetails loadUserById(int id) {
-		 System.out.println(" vamos a revisar el usuario");
+		 //System.out.println(">>>>>>>>>>>>>>>>>>>>>> vamos a revisar el usuario");
 		 User user = userRepository.findUserById(id);
-		 
-		 if (user == null) {
-			 System.out.println(" 3.5 no encontró el usuario");
-		 }else {
-			 System.out.println(" 3.5 el usuario es"+user.getName());
-		 }
         return UserPrincipal.create(user);
     }
 	 
-	 @Transactional
 	 public User getUserAppById(int id) {
 		 return userRepository.findUserById(id);
 	 }

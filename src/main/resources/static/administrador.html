@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang = "es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name = "viewport" content = "width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Administrador - D & M airefresco de Colombia Ltda.</title>
+		<link rel = "shortcut icon" href="supportSources/images/logo.ico" type="image/png" />
+		<link rel = "stylesheet" href = "supportSources/css/common.css">
+	</head>
+	<body>
+		<section class="Header">
+			<div class="UserInfo">
+				<img id="userPic" src="supportSources/images/unauthenticated.jpg"/>
+				<div>
+					<h1 id="userName">Unauthenticated</h1>
+					<p id="userRole">role undefined</p>
+				</div>
+			</div>
+			<div class="NotificationArea">
+				<section>
+					<p class="spanAlert" id = "messagesSpan">7</p>
+					<img src="supportSources/images/messages.png" onclick="dropDown('messages')"/>
+					<div class="dropDown" id="messagesDropDown">
+						<div >
+							<ul id="messageList">							
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<p class="spanAlert" id = "notifySpan">10</p>
+					<img src="supportSources/images/notifications.png" onclick="dropDown('notify')"/>
+					<div class="dropDown" id="notifyDropDown">
+						<div>
+							<ul id="notificationList">							
+							</ul>
+						</div>
+					</div>
+				</section>
+			</div>
+		</section>
+		<div class="dashBoard">
+			<div class="sideBar">
+				<ul>
+					<li>
+						Control de usuarios
+					</li>
+					<li>
+						planeación
+					</li>
+					<li>
+						tareas
+					</li>
+					<li>
+						Control de actividades
+					</li>
+				</ul>
+			</div>			
+		</div>
+		<div class="MainDashBoard">
+		</div>
+		<div id = "loadingLayout">
+		<section>
+			<img src="supportSources/images/loading.gif"/>
+			<h1>Cargando...</h1>
+		</section>
+	</div>
+	</body>
+	<script type="text/javascript" src="script/public/publicSourcesHandlers.js"> </script>
+</html>

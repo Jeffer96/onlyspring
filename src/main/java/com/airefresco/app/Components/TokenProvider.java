@@ -1,17 +1,9 @@
 package com.airefresco.app.Components;
 
-import java.util.Arrays;
-import java.util.Collection;
+
 import java.util.Date;
-import java.util.stream.Collectors;
-
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import com.airefresco.app.Security.UserPrincipal;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -24,10 +16,6 @@ import static com.airefresco.app.Security.Constants.*;
 
 public class TokenProvider {
 
-	
-	private TokenProvider() {
-	}
-
 	public static String generateToken(Authentication authentication) {
 		UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 		return Jwts.builder()
@@ -38,21 +26,6 @@ public class TokenProvider {
 				.compact();
 	}
 	
-	/**
-	public static UsernamePasswordAuthenticationToken getAuthentication(final String token, final UserDetails userDetails) {
-
-		Claims claims = Jwts.parser()
-				.setSigningKey(SUPER_SECRET_KEY)
-				.parseClaimsJws(token)
-				.getBody();
-
-		final Collection<SimpleGrantedAuthority> authorities =
-				Arrays.stream(claims.get(AUTHORITIES_KEY).toString().split(","))
-						.map(SimpleGrantedAuthority::new)
-						.collect(Collectors.toList());
-
-		return new UsernamePasswordAuthenticationToken(userDetails, "", authorities);
-	}**/
 
 	public static int getUserId(String token) {
 		Claims claims = Jwts.parser()

@@ -17,7 +17,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     UserRepository userRepository;
 	
 	public CustomUserDetailsService() {
-		System.out.println(">>>>>>>>>>>>>>>>creando el cuds");
+		//System.out.println(">>>>>>>>>>>>>>>>creando el cuds");
 	}
 	
 	@Override

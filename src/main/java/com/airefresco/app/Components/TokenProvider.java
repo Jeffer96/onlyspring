@@ -18,6 +18,7 @@ public class TokenProvider {
 
 	public static String generateToken(Authentication authentication) {
 		UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+		//System.out.println(new Date().getTime() + "TOKEN_EXPIRATION_TIME");
 		return Jwts.builder()
 				.setSubject(Integer.toString(userPrincipal.getId()))
 				.signWith(SignatureAlgorithm.HS512, SUPER_SECRET_KEY)

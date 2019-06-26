@@ -65,6 +65,8 @@ public class webSecurityConfig extends WebSecurityConfigurerAdapter{
         .authorizeRequests()
             	.antMatchers("/supportSources/**","/script/public/**","/certificados/**","/login/**","/")
             		.permitAll()
+            	.antMatchers("/administrador")
+            		.hasAuthority("ADMIN")
             	.anyRequest()
             		.authenticated()
              .and()
@@ -73,8 +75,9 @@ public class webSecurityConfig extends WebSecurityConfigurerAdapter{
         	.permitAll()
         	.and()
         .logout()
+        	//.logoutUrl("/logout")
         	.clearAuthentication(true)
-        	.logoutSuccessUrl("/login");
+        	.logoutSuccessUrl("/portal");
 		
 		// Add our custom JWT security filter
 		httpSecurity.addFilterBefore( new JwtAuthenticationFilter(cuds), UsernamePasswordAuthenticationFilter.class );

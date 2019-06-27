@@ -1,4 +1,5 @@
 function loadReady(){
+	showLoading();
 	fetch("/login/getUrl",{
 		headers : new Headers({'Authorization' : localStorage.getItem(ap) ? tp + localStorage.getItem(ap) : ""})
 	})
@@ -35,17 +36,9 @@ function loadWith(goToUrl){
 		}
 	});
 }
-function showLoading(){document.getElementById("loadingLayout").style.display = "block";}function hideLoading(){document.getElementById("loadingLayout").style.display = "none";}const tp = 'Bearer '; const ap = "token"; var identifier={"/login":function(){sll();},"/administrador":function(){sla();}};var current="";var visible = false;var currentDrop = "";function dropDown(id){if (currentDrop == ""){currentDrop = id+"DropDown";document.getElementById(currentDrop).style.display = "initial";}else if(currentDrop == id+"DropDown"){document.getElementById(id+"DropDown").style.display = "none";currentDrop = "";}else{document.getElementById(currentDrop).style.display = "none";currentDrop = id+"DropDown";document.getElementById(currentDrop).style.display = "initial";}}function toggleVisiblePass(){visible = !visible;document.getElementById("toggleVisibility").src = "supportSources/images/" + (visible ? "hide.png" : "show.png");document.getElementById("userPass").type = visible ? "text" : "password";}function changeInputText(){document.getElementById("errorMsg").style.display = "none";}
-function sll(){
-	$("#submitButton").click(function(){
-		authenticate({"userName":document.getElementById("userNick").value,"userPass":document.getElementById("userPass").value});
-	});
-}
-function sla(){
-	$("#logOut").click(function(){
-		lo();
-	});
-}
+function showLoading(){document.getElementById("rootContent").style.display="none";document.getElementById("loadingLayout").style.display = "block";}function hideLoading(){document.getElementById("rootContent").style.display="initial";document.getElementById("loadingLayout").style.display = "none";}const tp = 'Bearer '; const ap = "token"; var identifier={"/login":function(){sll();},"/administrador":function(){sla();}};var current="";var visible = false;var currentDrop = "";function dropDown(id){if (currentDrop == ""){currentDrop = id+"DropDown";document.getElementById(currentDrop).style.display = "initial";}else if(currentDrop == id+"DropDown"){document.getElementById(id+"DropDown").style.display = "none";currentDrop = "";}else{document.getElementById(currentDrop).style.display = "none";currentDrop = id+"DropDown";document.getElementById(currentDrop).style.display = "initial";}}function toggleVisiblePass(){visible = !visible;document.getElementById("toggleVisibility").src = "supportSources/images/" + (visible ? "hide.png" : "show.png");document.getElementById("userPass").type = visible ? "text" : "password";}function changeInputText(){document.getElementById("errorMsg").style.display = "none";}
+function sll(){$("#submitButton").click(function(){authenticate({"userName":document.getElementById("userNick").value,"userPass":document.getElementById("userPass").value});});}
+function sla(){$("#logOut").click(function(){lo();});}
 function ready(){
 	identifier[current]();
 }
@@ -53,6 +46,9 @@ function authenticate(oauth){
 	showLoading();
 	fetch("/login/auth",{
 		method : 'POST',
+		headers : new Headers({
+			'Content-Type': 'application/json'
+		}),
 		body : JSON.stringify(oauth)
 	}).then(function(response){
 		return response.json();
@@ -88,6 +84,14 @@ function test(){
 		headers : new Headers(customHeader)
 	}).then(function (response){
 		alert(response.status);
+	});
+}
+
+function testTwo(){
+	$.ajax("/administrador",{
+		type : 'GET'
+	}).done(function(newUrl){
+		$("#rootContent").html(newUrl);
 	});
 }
 

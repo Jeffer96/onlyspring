@@ -1,21 +1,14 @@
-*{
-	font-family: arial;
-	color: #353535;
-}
-
-body{
-	background-image: url('../images/compromiso ambiental.jpg');
-	background-size: cover;
-}
-
 #paneRegistry{
-	width: 30%;
+	font-family: arial;
+	width: 50%;
+	height: 100%;
 	position:absolute;
-	left: 30%;
-	top: 10%;
-	padding: 5%;
-	background-color: rgba(255,255,255,0.9);
-	box-shadow: 0vw 1vw 1vw black;
+	left: 20%;
+	top: 0%;
+	padding-top: 5vh;
+	padding-left: 5%;
+	padding-right: 5%;
+	background-color: #ffffff54;
 }
 
 #paneRegistry > h1 {
@@ -27,11 +20,9 @@ body{
 }
 
 #paneRegistry > div {
-	width: 100%;
-	padding-top: 2vh;
-	padding-bottom: 2vh;
-	padding-left: 2%;
-	padding-right: 2%;
+	margin-top: 2vh;
+	width: 96%;
+	display: flex;
 }
 
 #paneRegistry > form > * {
@@ -62,8 +53,9 @@ body{
 	cursor: pointer;
 }
 
-#paneRegistry > form > h2 {
-	width: 98%;
+#paneRegistry > div > h2 {
+	width: 45%;
+	margin-left: 2.5%;
 	padding: 1%;
 	background-color: #005376;
 	font-size: 1vw;
@@ -72,6 +64,28 @@ body{
 	text-align: center;
 }
 
-#paneRegistry > form > h2:hover {
+
+#paneRegistry > div > h2:hover {
 	background-color: #0080B7;
+}
+
+select{
+	width: 50%;
+	font-family: arial;
+	font-size: 1vw;
+	background-color: #ffffff54;
+	border: none;
+	text-align: center;
+	padding-top: 1vh;
+	padding-bottom: 1vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+}
+
+#mesagge{
+	width: 100%;
+	text-align: center;
+	font-family: arial;
+	font-size: 0.9vw;
+	margin-top: 1vh;
 }

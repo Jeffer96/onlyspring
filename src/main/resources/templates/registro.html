@@ -1,29 +1,28 @@
-<!DOCTYPE html>
-<html lang = "es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name = "viewport" content = "width=device-width, initial-scale=1, maximum-scale=1">
-		<title>Registro</title>
-		<link rel = "shortcut icon" href="supportSources/images/logo.ico" type="image/png" />
-		<link rel = "stylesheet" href = "supportSources/css/registro.css">
-		<link rel = "stylesheet" href = "supportSources/css/common.css">
-	</head>
-	<body>
-		<div id="paneRegistry">
-			<h1>Ingrese los datos</h1>
-			<form>
-				<p>Usuario: </p>
-				<input type="text" id="userName"/>
-				<p>Nombre de usuario: </p>
-				<input type="text" id="userNick"/>
-				<p>Contraseña:</p>
-				<img id="toggleVisibility" src="supportSources/images/show.png" onclick = "toggleVisiblePass()"/>
-				<input type="password" id="userPass"/>
-				<p>Identificación: </p>
-				<input type="text" id="userId"/>
-				<h2 onclick="test()"> ingresar </h2>
-			</form>
-		</div>
-	</body>
-	<script type="text/javascript" src="script/public/publicSourcesHandlers.js"> </script>
-</html>
+<link rel = "stylesheet" href="supportSources/css/registro.css">
+<p id="mesagge">mensage del servidor</p>
+<div id="paneRegistry">
+	<h1>Ingrese los datos</h1>
+	<form>
+		<p>Usuario: </p>
+		<input type="text" id="userNameInput"/>
+		<p>Nombre de usuario: </p>
+		<input type="text" id="userNickInput"/>
+		<p>Contraseña:</p>
+		<img id="toggleVisibility" src="supportSources/images/show.png" onclick = "toggleVisiblePass()"/>
+		<input type="password" id="userPassInput"/>
+		<p>Confirme la contraseña:</p>
+		<input type="password" id="confirmPassInput" oninput="confirmPass()"/>
+		<p>Identificación: </p>
+		<input type="number" id="userIdInput"/>
+		<p>Seleccione los permisos del usuario</p>
+		<select id="rolSetter">
+			<option value="ADMIN">administrador</option>
+			<option value="EMPLOYEE">empleado</option>
+			<option value="USER">usuario sin permisos</option>
+		</select>
+	</form>
+	<div>
+		<h2 id="submit"> Registrar </h2>
+		<h2 id="cancel"> Cancelar </h2>
+	</div>
+</div>

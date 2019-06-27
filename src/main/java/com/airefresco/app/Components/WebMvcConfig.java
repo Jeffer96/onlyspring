@@ -27,10 +27,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("portal");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/certificados").setViewName("certificados");
-        registry.addViewController("/registro").setViewName("registro");
         registry.addViewController("/administrador").setViewName("administrador");
         registry.addViewController("/portal").setViewName("portal");
         registry.addViewController("/home").setViewName("home");
+        /**section for administrator area*/
+        registry.addViewController("/registro").setViewName("registro");
+        registry.addViewController("/controlUsuarios").setViewName("controlUsuarios");
+        registry.addViewController("/registro").setViewName("registro");
     }
     
     @Override

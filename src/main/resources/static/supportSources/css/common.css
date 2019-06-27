@@ -3,13 +3,23 @@
 	box-sizing: boder-box;
 }
 
+body{
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+*:focus{
+	outline: none;
+}
 
 #loadingLayout{
 	position: absolute;
 	width: 100vw;
 	height: 100vh;
 	z-index: 1;
-	background-image: radial-gradient(#00000059 ,#001925f2);
+	background-color:#fff;
+	transition: display 1s;
+	-webkit-transition: display 1s;
+	-moz-transition: display 1s;
 }
 
 #loadingLayout > section {
@@ -155,16 +165,25 @@
 
 .dashBoard{
 	position: absolute;
-	top: 12vh;
-	height: 88vh;
+	top: 13vh;
+	height: 87vh;
 	width: 100vw;
-	background-image: linear-gradient( #ffffff,#f1f1f1);
+	background-image: linear-gradient(#fff,#ececec);
+}
+
+#MainDashBoard{
+	position: absolute;
+	width:80%;
+	left: 20%;
+	background-image: linear-gradient(#ffffff,#d2d2d2);
+	height: 88vh;
+	z-index: 1;
 }
 
 .sideBar{
 	position: absolute;
-	width: 20vw;
-	height: 88vh;
+	width: 20%;
+	height: 100%;
 	background-image: linear-gradient(#252525,#252525);
 	box-shadow: 0vw 0vw 1vw #8c8c8c;
 }
@@ -178,6 +197,7 @@
 }
 
 .sideBar > ul > li {
+	margin-top: 1vh;
 	padding-top: 2vh;
 	padding-bottom: 2vh;
 	padding-left: 1vw;
@@ -191,6 +211,11 @@
 	background-color: #b9b9b9;
 }
 
+.select{
+	color: #0062eb;
+	background-image: linear-gradient(#fff,#c7c7c7);
+	font-size: 1.5vw;
+}
 
 .sideBar > h1 {
 	position: absolute;
@@ -208,5 +233,6 @@
 .sideBar > h1:hover {
 	background-color: #8e8e8e;
 }
+
 
 

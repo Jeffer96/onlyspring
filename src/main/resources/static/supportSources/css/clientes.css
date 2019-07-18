@@ -1,0 +1,21 @@
+.colNum{
+	width: 4%;
+	text-align: center;
+}
+
+.colName{
+	width: 35%;
+}
+
+.colNit{
+	width: 20%;
+}
+
+.colState{
+	width: 10%;
+}
+
+.colDetails{
+	width: 10%;
+	text-align: center;
+}

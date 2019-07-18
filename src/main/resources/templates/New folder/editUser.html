@@ -1,0 +1,39 @@
+<link rel = "stylesheet" href="supportSources/css/edit.css">
+<h1 id="title"></h1>
+<div id="paneEdit">
+	<h3> Editar nombre: </h3>
+	<p id="actualName"></p>
+	<section>
+		<input type="text" id="newName" placeholder="Inserte el nuevo nombre"/>
+		<div class="fetchButton" onclick="updateName()">Actualizar</div>
+	</section>
+	<h3> Editar usuario: </h3>
+	<p id="actualNick"></p>
+	<section>
+		<input type="text" id="newNick" placeholder="Inserte el nuevo nick"/>
+		<div class="fetchButton" onclick="updateNick()">Actualizar</div>
+	</section>
+	<h3> Editar identificación: </h3>
+	<p id="actualId"></p>
+	<section>
+		<input type="number" id="newId" placeholder="Inserte el nuevo id - cc"/>
+		<div class="fetchButton" onclick="updateId()">Actualizar</div>
+	</section>
+	<h3> Editar Permisos: </h3>
+	<p id="actualRol"></p>
+	<section>
+		<select id="rolSetter">
+			<option value="ADMIN">administrador</option>
+			<option value="EMPLOYEE">empleado</option>
+			<option value="USER">usuario sin permisos</option>
+		</select>
+		<div class="fetchButton" onclick="updateRol()">Actualizar</div>
+	</section>
+	<h3> Editar email: </h3>
+	<p id="actualEmail"></p>
+	<section>
+		<input type="text" id="newEmail" placeholder="Inserte el nuevo email"/>
+		<div class="fetchButton" onclick="updateEmail()">Actualizar</div>
+	</section>
+	<div id="backButton" onclick="goBack()">volver</div>
+</div>

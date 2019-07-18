@@ -33,7 +33,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         /**section for administrator area*/
         registry.addViewController("/registro").setViewName("registro");
         registry.addViewController("/controlUsuarios").setViewName("controlUsuarios");
-        registry.addViewController("/registro").setViewName("registro");
+        registry.addViewController("/clientes").setViewName("clientes");
+        registry.addViewController("/editUser").setViewName("editUser");
     }
     
     @Override

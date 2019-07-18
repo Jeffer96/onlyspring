@@ -2,6 +2,7 @@ package com.airefresco.app.Security;
 
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -63,10 +64,14 @@ public class webSecurityConfig extends WebSecurityConfigurerAdapter{
             	.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
         .authorizeRequests()
-            	.antMatchers("/supportSources/**","/script/public/**","/certificados/**","/login/**","/")
+        		.antMatchers("/login/**")
+        			.permitAll()
+            	.antMatchers(HttpMethod.GET ,"/supportSources/**","/script/**","/certificados/**","/")
             		.permitAll()
-            	.antMatchers("/administrador","/controlUsuarios")
+            	.antMatchers("/administrador","/controlUsuarios", "/registro", "/editUser", "/deleteUser")
             		.hasAuthority("ADMIN")
+            	.antMatchers("/clientes")
+            		.hasAnyAuthority("ADMIN","EMPLOYEE")
             	.anyRequest()
             		.authenticated()
              .and()

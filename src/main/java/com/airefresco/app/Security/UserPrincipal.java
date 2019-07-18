@@ -26,10 +26,12 @@ public class UserPrincipal implements UserDetails {
 
     @JsonIgnore
     private String userPass;
+    
+    private String email;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrincipal(int id, String userName, String nickName, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserPrincipal(int id, String userName, String nickName, String password, String email, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.userName = userName;
         this.nickName = nickName;
@@ -43,9 +45,10 @@ public class UserPrincipal implements UserDetails {
        authorities.add(role);
         return new UserPrincipal(
                 user.getId(),
-                user.getName(),
+                user.getUserName(),
                 user.getNickName(),
-                user.getPass(),
+                user.getUserPass(),
+                user.getEmail(),
                 authorities
         );
     	
@@ -57,6 +60,10 @@ public class UserPrincipal implements UserDetails {
         
     public String getNickName() {
     	return this.nickName;
+    }
+    
+    public String getEmail() {
+    	return this.email;
     }
     
        

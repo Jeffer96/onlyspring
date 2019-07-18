@@ -1,7 +1,6 @@
-package com.airefresco.app.Model;
+package com.airefresco.app.PayLoad;
 
 public class ResponseLogin {
-	private String message;
 	private String userName;
 	private String respCode;
 	private String token;
@@ -11,10 +10,9 @@ public class ResponseLogin {
 		
 	}
 	
-	public ResponseLogin(String token, String userName, String respCode, String message, String url) {
+	public ResponseLogin(String token, String userName, String respCode, String url) {
 		this.userName = userName;
 		this.respCode = respCode;
-		this.message = message;
 		this.token = token;
 		this.url = url;
 	}
@@ -41,14 +39,6 @@ public class ResponseLogin {
 	}
 	public void setToken(String token) {
 		this.token = token;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 	public String getUserName() {

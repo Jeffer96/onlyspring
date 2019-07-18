@@ -1,4 +1,4 @@
-package com.airefresco.app.Model;
+package com.airefresco.app.PayLoad;
 
 public class LoginRequest {
 	

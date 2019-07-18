@@ -1,0 +1,53 @@
+#controlBar{
+	display: flex;
+	width: 95%;
+	margin-left: 2.5%;
+	background-image: linear-gradient(#ffffff,#fff);
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	padding-left: 2vh;
+}
+
+#controlBar > p {
+	width: 10%;
+	text-align: center;
+	font-family: arial black;
+	font-size: 0.8vw;
+	padding-top: 0.5vw;
+	color: grey;
+}
+
+.selector{
+	font-family: arial;
+	font-size: 0.8vw;
+	border: solid #c7c7c7;
+	border-width: 0px 0px 1px;
+	width: 12%;
+}
+
+.button{
+	font-size: 0.8vw;
+	font-family: arial black;
+	background-image: linear-gradient(#efefef,#dadada);
+	padding: 0.5vw;
+	border-radius: 0.5vw;
+	color: #6f6f6f;
+	cursor: pointer;
+	width: 10%;
+	text-align: center;
+	margin-left: 2.5%;
+}
+
+.button:hover{
+	color: white;
+	background-image: linear-gradient(#bbbbbb,#ababab);
+}
+
+#searchInp{
+	width: 24%;
+	margin-left: 2%;
+	border: solid #c7c7c7;
+	border-width: 0px 0px 1px;
+	font-family: 0.7vw;
+	font-family: arial;
+}

@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.airefresco.app.Components.TokenProvider;
-//import com.airefresco.app.Exceptions.UnauthorizedExeption;
-import com.airefresco.app.Model.LoginRequest;
-import com.airefresco.app.Model.ResponseLogin;
 import com.airefresco.app.Model.User;
+import com.airefresco.app.PayLoad.LoginRequest;
+import com.airefresco.app.PayLoad.ResponseLogin;
 import com.airefresco.app.service.UserRepository;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,8 +44,7 @@ public class AuthControllerRest {
 			Authentication authentication = authenticationManager.authenticate( upat );
 			SecurityContextHolder.getContext().setAuthentication(authentication);
 			ans.setToken(TokenProvider.generateToken(authentication));
-			ans.setUserName(us.getName());
-			ans.setMessage("Bienvenido: "+us.getName());
+			ans.setUserName(us.getUserName());
 			ans.setRespCode("202");
 			ans.successAuth(us.getRoleName());
 		}catch (AuthenticationException  ex) {
@@ -63,9 +62,11 @@ public class AuthControllerRest {
 			if (us != null) {
 				UsernamePasswordAuthenticationToken upat =  new UsernamePasswordAuthenticationToken(lr.getUserName(),lr.getUserPass());
 				authenticate(upat, ans, us);
+			}else {
+				ans.setRespCode("401");
 			}
-		}catch (DataAccessException ex) {
-			ans.setRespCode("404");
+		}catch (DataAccessException ex) { 
+			ans.setRespCode("500");
 		}
 		return ans;
 	}

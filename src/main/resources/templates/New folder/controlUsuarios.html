@@ -1,0 +1,30 @@
+<link rel = "stylesheet" href="supportSources/css/cua.css">
+<link rel = "stylesheet" href="supportSources/css/controlBar.css">
+<div id = "controlBar">
+	<div class="button" id="addButton">Agregar usuario</div>
+	<p>filtrar por</p>
+	<select id="filter" class="selector">
+		<option value="ADMIN">Rol administrador</option>
+		<option value="EMPLOYEE">Rol empleado</option>
+		<option value="USER">Rol usuario</option>
+	</select>
+	<p>Ordenar por</p> 
+	<select id="order" class="selector">
+		<option value="name">nombre</option>
+		<option value="identificacion">identificacion</option>
+		<option value="nick">nombre de usuario</option>
+	</select>
+	<div class="button" id="searchButton">Buscar</div>
+    <input type="text" id="searchInp">
+</div>
+<table id="controlUsuariosTable">
+	<tr>
+		<th class="colNum">#</th>
+		<th class="colName">Nombre del usuario</th>
+		<th class="colId">Identificación</th>
+		<th class="colNick">Usuario</th>
+		<th class="colRol">Rol del usuario</th>
+		<th class="colOpt">Editar</th>
+		<th class="colOpt">Eliminar</th>
+	<tr>
+</table>

@@ -168,14 +168,12 @@ body{
 	top: 13vh;
 	height: 87vh;
 	width: 100vw;
-	background-image: linear-gradient(#fff,#ececec);
 }
 
 #MainDashBoard{
 	position: absolute;
 	width:80%;
 	left: 20%;
-	background-image: linear-gradient(#ffffff,#d2d2d2);
 	height: 88vh;
 	z-index: 1;
 }
@@ -232,6 +230,41 @@ body{
 
 .sideBar > h1:hover {
 	background-color: #8e8e8e;
+}
+
+table{
+	border-spacing: 0px;
+	width: 95%;
+	margin-left: 2.5%;
+
+}
+
+th{
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	font-family: arial black;
+	font-size: 1vw;
+	color: #e8e8e8;
+	text-align: left;
+	background-image: linear-gradient(#565656,#616161);
+	cursor: not-allowed;
+}
+
+td{
+	padding-top: 1vh;
+	padding-bottom: 1vh;
+	font-size: 1vw;
+	font-family: arial;
+	border:solid #c3c3c3;
+	border-width: 0px 0px 1px;
+}
+
+.darkRow{
+	background-color: #ececec;
+}
+
+.lightRow{
+	background-color: #f9f9f9;
 }
 
 

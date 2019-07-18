@@ -10,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import lombok.Data;
 import lombok.ToString;
-import net.minidev.json.annotate.JsonIgnore;
 
 
 @Entity
@@ -25,23 +24,23 @@ public class User {
 	private String userName;
 	@NotBlank
 	private String nickName;
-	@NotBlank
-	@JsonIgnore 
+	@NotBlank 
 	private String userPass;
 	@NotBlank
 	private String roleName;
-	
+	private String email;
 	
 	public User() {
 		
 	}
 	
-	public User(String name, String nickName, String pass, int id, String roleName) {
+	public User(String userName, String nickName, String userPass, int id, String roleName, String email) {
 		this.id = id;
-		this.userPass = secure(pass);
+		this.userPass = secure(userPass);
 		this.nickName = nickName;
-		this.userName = name;
+		this.userName = userName;
 		this.roleName = roleName;
+		this.email = email;
 	}
 	
 	
@@ -49,26 +48,26 @@ public class User {
 		return new BCryptPasswordEncoder().encode(param);
 	}
 	
-	public User(String name, String pass) {
+	public User(String name, String userPass) {
 		this.userName= name;
-		this.userPass = secure(pass);
+		this.userPass = secure(userPass);
 	}
 	
-	public void setName(String name) {
-		this.userName = name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	
-	public String getName() {
+	public String getUserName() {
 		return this.userName;
 	}
 	
 
-	public String getPass(){
+	public String getUserPass(){
 		return this.userPass;
 	}
 	
-	public void setPass(String pass) {
-		this.userPass = secure(pass);
+	public void setUserPass(String userPass) {
+		this.userPass = secure(userPass);
 	}
 	
 	public int getId() {
@@ -93,6 +92,14 @@ public class User {
 	
 	public void setRoleName(String rol) {
 		this.roleName = rol;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }
